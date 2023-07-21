@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+<h1 align="center"> <b>Grocery List</b></h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h2 align="center">Hello! I'm Anastasiia Kucher 
+<img src="https://github.com/blackcater/blackcater/raw/main/images/Hi.gif" height="32"/></h2>
 
-## Available Scripts
+<h3 align="center">FullStack Developer and Project Manager from Ukraine!</h3>
+<br> 
+<h3 align="center">This project was built with the usage of React JS and the porpose of this to help people to keep in mind every product that is nececcary to buy.</h3>  
+<div align="center">
 
-In the project directory, you can run:
+![reactjslounge ](https://img.shields.io/badge/-ReactJs-61DAFB?logo=react&logoColor=white) 
+![reactjslounge](https://img.shields.io/badge/HTML-5-orange)
+![reactjslounge](https://img.shields.io/badge/CSS-3-blue)
+![reactjslounge](https://img.shields.io/badge/Git-orange)
+</div>
 
-### `npm start`
+<p> <b> Easy steps to run the project:</b> </p> 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Wride down into the terminal this combination:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+ git clone https://github.com/AnastassiiaKucher/new-grocery-list.git
 
-### `npm test`
+2. Open new terminal
+3. code .
+4. nmp start
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<p> <b> Usage & Code listing: </b></p>
 
-### `npm run build`
+1. The whole concept of the application
+![haupt](/readmephoto/one.PNG )
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. The input where the user can text the list of the products
+![haupt](/readmephoto/input.PNG )
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+Here you can see the function to display the state when the user input the products to the list and exclusion of the ability to add a column without any data:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+onChangeEvent(e){
+    this.setState({userInput: e});
+}
+addItem(input){
+    if (input === ''){
+        alert("Please, enter an Item")
+    } else{
 
-### `npm run eject`
+    let listArray = this.state.groceryList;
+    listArray.push(input);
+    this.setState({groceryList: listArray, userInput: '' })
+    }
+        }
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. The "Add" button with pressing which the user can add the items to the list.
+    ![haupt](/readmephoto/add.PNG)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. The "Delete" button with pressing which the user can delete the items out of the list.
+![haupt](/readmephoto/delete.PNG) 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+Usage of the access to what inside the list:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+ deleteItem(){
+            let listArray = this.state.groceryList;
+            listArray = [];
+            this.setState({groceryList: listArray});
+        }
+```
+```
+Get an ancess to what the user has written till this moment:
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<ul>
+                {this.state.groceryList.map((item, index) => (
+                    <li onClick={this.crossWord} key={index} alt='check-box'  >
+                        <img src={check} width="40px"  alt='check-box' /> 
+                        {item}
+                    </li>
+                ))}
+            </ul>
+```
