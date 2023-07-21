@@ -61,3 +61,20 @@ input{
 img{
     border-radius: 20%;
 }
+
+    @media all and (max-width: 800px) {
+
+    .app{
+        width: 400px;
+    }
+    }
+    @media all and (max-width: 500px) {
+
+        .app{
+            width: 300px;
+        }
+        .Man{
+            height: 180px;
+            width: 180px;
+        }
+    }
